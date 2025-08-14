@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Under Construction?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff;
+            color: #fda085;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>Welcome to my website.</p>
+    <h1 id="hello">Hello World!</h1>
+    <button id="changeColor">Change Color</button>
+    <p id="message">Click the button to change the text color.</p>
+
+    <script>
+        // Select elements
+        const hello = document.getElementById('hello');
+        const button = document.getElementById('changeColor');
+        const message = document.getElementById('message');
+
+        // Array of colors
+        const colors = ['#FF6B6B', '#4ECDC4', '#FFD93D', '#6A4C93', '#FF8C42'];
+
+        // Function to get a random color
+        function getRandomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Change color on button click
+        button.addEventListener('click', () => {
+            const newColor = getRandomColor();
+            hello.style.color = newColor;
+            message.textContent = `The color is now ${newColor}!`;
+        });
+
+        // Animate text with JS
+        setInterval(() => {
+            hello.style.transform = `rotate(${Math.sin(Date.now() / 500) * 10}deg)`;
+        }, 50);
+    </script>
 </body>
 </html>
